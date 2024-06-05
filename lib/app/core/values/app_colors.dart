@@ -30,7 +30,9 @@ abstract class AppColors {
   static const Color bottomItemUnselectedColor = primary500;
   static const Color bottomItemUnselectedColorDark = colorWhite;
   static const Color bottomNavColor = Color(0xFFF8F9FA);
+  static const Color bottomSheetColor = Color(0xFFF8F8F8);
   static const Color defaultRippleColor = Color(0x0338686A);
+  static const Color checkboxColor = Color(0xFFFF746E);
 
   static const Color white = Color(0xffffffff);
 
@@ -38,7 +40,7 @@ abstract class AppColors {
 
   //Primary Shades
 
-  static const Color primary = Color(0xff194185);
+  static const Color primary = Color(0xFFF8F8F8);
 
   static const Color primary25 = Color(0xffF5FAFF);
 

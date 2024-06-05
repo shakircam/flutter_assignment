@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:logger/logger.dart';
+import 'dart:developer';
 
 class AssetImageView extends StatelessWidget {
   const AssetImageView({
@@ -21,6 +23,7 @@ class AssetImageView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    log("image asset view $fileName");
     return _getView();
   }
 

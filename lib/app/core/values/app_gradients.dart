@@ -11,6 +11,6 @@ abstract class AppGradients {
   static const LinearGradient datePickerGradient = LinearGradient(
     begin: Alignment.topCenter,
     end: Alignment.bottomCenter,
-    colors: [AppColors.primary400, AppColors.primary300],
+    colors: [AppColors.colorPrimary, AppColors.colorPrimary],
   );
 }

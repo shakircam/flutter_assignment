@@ -1,0 +1,150 @@
+[
+
+    {
+       "id": 1,
+       "name": "Hybrid Brinjal Bari-2 Seeds",
+       "date_created": "2021-09-13T09:58:43",
+       "short_description": "<p>High Quality Seeds.</p>\n<p>Seeds Germination: 85%,</p>\n<p>Purity : 98%,</p>\n<p>Net Weight : 1 Gram</p>\n",
+       "sku": "500",
+       "price": "50",
+       "regular_price": "50.00",
+       "sale_price": "45",
+       "average_rating": "0.00",
+       "rating_count": 0,
+       "total_sales": 8,
+       "images": [
+         {
+           "src": "https://mobileapp.getdokan.com/wp-content/uploads/2021/04/FB_IMG_1592216280859-1.jpg"
+         }
+       ]
+     },
+     
+      {
+       "id": 2,
+       "name": "Pine Apple",
+       "date_created": "2021-04-30T01:00:17",
+       "short_description": "<p>High Quality Seeds.</p>\n<p>Seeds Germination: 85%,</p>\n<p>Purity : 98%,</p>\n<p>Net Weight : 1 Gram</p>\n",
+       "sku": "500",
+       "price": "40",
+       "regular_price": "40.00",
+       "sale_price": "40",
+       "average_rating": "0.00",
+       "rating_count": 0,
+       "total_sales": 7,
+       "images": [
+         {
+           "src": "https://images.unsplash.com/photo-1550258987-190a2d41a8ba?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8fA%3D%3D"
+         }
+       ]
+     },
+     
+      {
+       "id": 3,
+       "name": "Strawberry",
+       "date_created": "2019-01-16T10:09:32",
+       "short_description": "<p>High Quality Seeds.</p>\n<p>Seeds Germination: 85%,</p>\n<p>Purity : 98%,</p>\n<p>Net Weight : 1 Gram</p>\n",
+       "sku": "500",
+       "price": "30",
+       "regular_price": "30.00",
+       "sale_price": "28",
+       "average_rating": "0.00",
+       "rating_count": 0,
+       "total_sales": 5,
+       "images": [
+         {
+           "src": "https://images.unsplash.com/photo-1601004890684-d8cbf643f5f2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8fA%3D%3D"
+         }
+       ]
+     },
+      {
+       "id": 4,
+       "name": "Capsicum",
+       "date_created": "2019-01-16T10:09:32",
+       "short_description": "<p>High Quality Seeds.</p>\n<p>Seeds Germination: 85%,</p>\n<p>Purity : 98%,</p>\n<p>Net Weight : 1 Gram</p>\n",
+       "sku": "500",
+       "price": "35",
+       "regular_price": "35.00",
+       "sale_price": "30",
+       "average_rating": "0.00",
+       "rating_count": 0,
+       "total_sales": 7,
+       "images": [
+         {
+           "src": "https://images.unsplash.com/photo-1525607551316-4a8e16d1f9ba?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8NDR8fHxlbnwwfHx8fHw%3D"
+         }
+       ]
+     },
+      {
+       "id": 5,
+       "name": "Banana",
+       "date_created": "2019-01-16T10:09:31",
+       "short_description": "<p>High Quality Seeds.</p>\n<p>Seeds Germination: 85%,</p>\n<p>Purity : 98%,</p>\n<p>Net Weight : 1 Gram</p>\n",
+       "sku": "500",
+       "price": "45",
+       "regular_price": "45.00",
+       "sale_price": "40",
+       "average_rating": "0.00",
+       "rating_count": 0,
+       "total_sales": 3,
+       "images": [
+         {
+           "src": "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8NTN8fHxlbnwwfHx8fHw%3D"
+         }
+       ]
+     },
+      {
+       "id": 6,
+       "name": "Papaya",
+       "date_created": "2019-01-16T10:09:30",
+       "short_description": "<p>High Quality Seeds.</p>\n<p>Seeds Germination: 85%,</p>\n<p>Purity : 98%,</p>\n<p>Net Weight : 1 Gram</p>\n",
+       "sku": "500",
+       "price": "55",
+       "regular_price": "55.00",
+       "sale_price": "50",
+       "average_rating": "0.00",
+       "rating_count": 0,
+       "total_sales": 4,
+       "images": [
+         {
+           "src": "https://images.unsplash.com/photo-1526318472351-c75fcf070305?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8Njh8fHxlbnwwfHx8fHw%3D"
+         }
+       ]
+     },
+      {
+       "id": 7,
+       "name": "Malta",
+       "date_created": "2019-01-16T10:09:30",
+       "short_description": "<p>High Quality Seeds.</p>\n<p>Seeds Germination: 85%,</p>\n<p>Purity : 98%,</p>\n<p>Net Weight : 1 Gram</p>\n",
+       "sku": "500",
+       "price": "80",
+       "regular_price": "80.00",
+       "sale_price": "78",
+       "average_rating": "0.00",
+       "rating_count": 0,
+       "total_sales": 4,
+       "images": [
+         {
+           "src": "https://images.unsplash.com/photo-1612823426673-68ec0a97a2bc?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8NTJ8fHxlbnwwfHx8fHw%3D"
+         }
+       ]
+     },
+      {
+       "id": 8,
+       "name": "Hybrid Brinjal Bari-2 Seeds",
+       "date_created": "2019-02-16T10:09:30",
+       "short_description": "<p>High Quality Seeds.</p>\n<p>Seeds Germination: 85%,</p>\n<p>Purity : 98%,</p>\n<p>Net Weight : 1 Gram</p>\n",
+       "sku": "500",
+       "price": "65",
+       "regular_price": "65.00",
+       "sale_price": "65",
+       "average_rating": "0.00",
+       "rating_count": 0,
+       "total_sales": 5,
+       "images": [
+         {
+           "src": "https://images.unsplash.com/photo-1601379760883-1bb497c558f0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8NDd8fHxlbnwwfHx8fHw%3D"
+         }
+       ]
+     }
+   
+   ]

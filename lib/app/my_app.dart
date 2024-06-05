@@ -30,13 +30,12 @@ class _MyAppState extends State<MyApp> {
         minTextAdapt: true,
         useInheritedMediaQuery: false,
         builder: (BuildContext context, Widget? child) {
-          return MaterialApp(
-              title: "",
-              debugShowCheckedModeBanner: false,
-              theme: _getTheme(),
-              home: const MainView(),
-              initialRoute: '/',
-              onGenerateRoute: RouteServices.generateRoute);
+          return MaterialApp.router(
+            title: "",
+            debugShowCheckedModeBanner: false,
+            theme: _getTheme(),
+            routerConfig: RouterService.router,
+          );
         });
   }
 
