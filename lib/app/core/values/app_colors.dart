@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 
 abstract class AppColors {
-  static Color pure_white = const Color(0xffffffff);
+  static const Color pure_white = Color(0xffffffff);
   static Color transparent = Colors.transparent;
 
   static const Color loaderBackground = Color(0x32000000);
 
   static const Color appBarColorDark = primary500;
   static const Color neutralGray = Color(0xFF6F7B83);
+  static const Color bottomIcon = Color(0xFF6E7FAA);
   static const Color neutralLightGray = Color(0xFFA0ABB4);
   static const Color textColorGreyDark = Color(0xFF979797);
   static const Color textColorGreyLight = Color(0xFFABABAB);
-  static const Color appBarColor = Color(0xFFFFFFFF);
+  static const Color appBarColor = primary;
   static const Color errorColor = Color(0xFFAB0B0B);
   static const Color textColorWhite = Color(0xFFFFFFFF);
   static const Color colorBlack = Color(0xFF000000);
@@ -26,13 +27,13 @@ abstract class AppColors {
   static const Color pageBackgroundDark = neutralAlmostBlack;
   static const Color neutralSeparator = Color(0xFFECEDF0);
   static const Color neutralBackground = Color(0xFFF8F9FA);
-  static const Color bottomItemSelectedColor = primary400;
   static const Color bottomItemUnselectedColor = primary500;
   static const Color bottomItemUnselectedColorDark = colorWhite;
   static const Color bottomNavColor = Color(0xFFF8F9FA);
   static const Color bottomSheetColor = Color(0xFFF8F8F8);
   static const Color defaultRippleColor = Color(0x0338686A);
   static const Color checkboxColor = Color(0xFFFF746E);
+  static const Color bottomItemSelectedColor = checkboxColor;
 
   static const Color white = Color(0xffffffff);
 

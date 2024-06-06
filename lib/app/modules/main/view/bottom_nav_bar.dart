@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_assessment/app/core/values/app_colors.dart';
+import 'package:flutter_assessment/app/core/values/app_icons.dart';
 import 'package:flutter_assessment/app/core/values/app_values.dart';
+import 'package:flutter_assessment/app/core/widget/button/ripple.dart';
 import 'package:flutter_assessment/app/core/widget/image/asset_image_view.dart';
 import 'package:flutter_assessment/app/modules/main/controller/bottom_nav_controller.dart';
 import 'package:flutter_assessment/app/modules/main/model/bottom_nav_item.dart';
@@ -25,42 +27,49 @@ class _BottomNavBarState extends State<BottomNavBar> {
   Widget build(BuildContext context) {
     List<BottomNavItem> navItems = _getNavItemsData();
     var navIndex = Provider.of<BottomNavController>(context, listen: true);
-    //var navIndex = ref.watch(navProvider);
 
     return Container(
-      decoration: _getDecoration(context),
-      margin: EdgeInsets.zero,
-      child: BottomNavigationBar(
-        key: bottomNavKey,
-        items: _getBottomNavItems(context, navItems, navIndex.selectedIndex),
-        showSelectedLabels: true,
-        showUnselectedLabels: true,
-        type: BottomNavigationBarType.fixed,
-        backgroundColor: Theme.of(context).colorScheme.background,
-        selectedItemColor: _selectedItemColor,
-        unselectedItemColor: Theme.of(context).iconTheme.color,
-        currentIndex: navIndex.selectedIndex,
-        onTap: (index) => _onTapNavItem(index, navItems[index]),
-      ),
-    );
+        //decoration: _getDecoration(context),
+        margin: EdgeInsets.zero,
+        child: BottomAppBar(
+            notchMargin: 5.0,
+            shape: const CircularNotchedRectangle(),
+            child:
+                _bottomAppBarItems(context, navItems, navIndex.selectedIndex)));
   }
 
-  List<BottomNavigationBarItem> _getBottomNavItems(
+  Widget _bottomAppBarItems(
       BuildContext context, List<BottomNavItem> navItems, int selectedIndex) {
-    return navItems.map(
-      (BottomNavItem navItem) {
-        int index = navItems.indexOf(navItem);
-        bool isSelectedItem = index == selectedIndex;
+    return Row(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: navItems.map(
+          (BottomNavItem navItem) {
+            int index = navItems.indexOf(navItem);
+            bool isSelectedItem = index == selectedIndex;
 
-        return BottomNavigationBarItem(
-          icon: navItem.isIconFromIconData
-              ? _getNavItemIconFromIconData(navItem, isSelectedItem)
-              : _getNavItemIconFromAsset(context, navItem, isSelectedItem),
-          label: navItem.navTitle,
-          tooltip: "",
-        );
-      },
-    ).toList();
+            return Ripple(
+              onTap: () => _onTapNavItem(index, navItems[index]),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  navItem.isIconFromIconData
+                      ? _getNavItemIconFromIconData(navItem, isSelectedItem)
+                      : _getNavItemIconFromAsset(
+                          context, navItem, isSelectedItem),
+                  Text(
+                    navItem.navTitle,
+                    style: TextStyle(
+                        color: isSelectedItem
+                            ? _selectedItemColor
+                            : AppColors.bottomIcon),
+                  ),
+                ],
+              ),
+            );
+          },
+        ).toList());
   }
 
   Widget _getNavItemIconFromIconData(
@@ -70,6 +79,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
     return Icon(
       isSelectedItem ? navItem.activeIconData : navItem.regularIconData,
       size: AppValues.iconDefaultSize.r,
+      color: isSelectedItem ? _selectedItemColor : AppColors.bottomIcon,
     );
   }
 
@@ -83,9 +93,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
           isSelectedItem ? navItem.activeAssetIcon : navItem.regularAssetIcon,
       height: AppValues.iconDefaultSize.r,
       width: AppValues.iconDefaultSize.r,
-      color: isSelectedItem
-          ? _selectedItemColor
-          : Theme.of(context).iconTheme.color,
+      color: isSelectedItem ? _selectedItemColor : AppColors.bottomIcon,
     );
   }
 
@@ -95,31 +103,44 @@ class _BottomNavBarState extends State<BottomNavBar> {
   ) {
     Provider.of<BottomNavController>(context, listen: false)
         .onIndexChanged(index);
-    //ref.read(navProvider.notifier).onIndexChanged(index);
     widget.onNewMenuSelected(navItem.menuCode);
   }
 
   List<BottomNavItem> _getNavItemsData() {
     return [
-      BottomNavItem.fromIconData(
+      BottomNavItem.fromAsset(
         navTitle: "Home",
-        activeIcon: Icons.home_sharp,
-        regularIcon: Icons.home_outlined,
+        activeIcon: AppIcons.homeIcon,
+        regularIcon: AppIcons.homeIcon,
         menuCode: MenuCode.HOME,
       ),
-      BottomNavItem.fromIconData(
+      BottomNavItem.fromAsset(
+        navTitle: "More",
+        activeIcon: AppIcons.moreIcon,
+        regularIcon: AppIcons.moreIcon,
+        menuCode: MenuCode.SETTING,
+      ),
+      BottomNavItem.fromAsset(
+        navTitle: "Cart",
+        activeIcon: AppIcons.cartIcon,
+        regularIcon: AppIcons.cartIcon,
+        menuCode: MenuCode.SETTING,
+      ),
+      BottomNavItem.fromAsset(
         navTitle: "Setting",
-        activeIcon: Icons.calendar_today_outlined,
-        regularIcon: Icons.calendar_today_outlined,
+        activeIcon: AppIcons.accountIcon,
+        regularIcon: AppIcons.accountIcon,
         menuCode: MenuCode.SETTING,
       ),
     ];
   }
 
   BoxDecoration _getDecoration(BuildContext context) => BoxDecoration(
+        borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(10), topRight: Radius.circular(10)),
         boxShadow: [
           BoxShadow(
-            color: AppColors.colorBlack.withAlpha(40),
+            color: AppColors.white.withAlpha(140),
             blurRadius: 5.0, // soften the shadow
             spreadRadius: 0.0, //extend the shadow
             offset: const Offset(

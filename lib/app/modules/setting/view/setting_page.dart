@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_assessment/app/core/values/app_colors.dart';
 import 'package:flutter_assessment/app/core/values/app_values.dart';
@@ -7,8 +9,28 @@ import 'package:flutter_assessment/app/modules/setting/widget/image_avatar.dart'
 import 'package:flutter_assessment/app/modules/setting/widget/theme_dialog.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class SettingPage extends StatelessWidget {
+class SettingPage extends StatefulWidget {
   const SettingPage({super.key});
+
+  @override
+  State<SettingPage> createState() => _SettingPageState();
+}
+
+class _SettingPageState extends State<SettingPage> {
+  bool _isExpanded = false;
+
+  void _toggleExpansion() {
+    setState(() {
+      _isExpanded = !_isExpanded;
+    });
+  }
+
+  void _closeExpansion() {
+    setState(() {
+      log("click for close");
+      _isExpanded = false;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -98,6 +120,12 @@ class SettingPage extends StatelessWidget {
         style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w500),
       ),
       trailing: const Icon(Icons.chevron_right, color: Colors.black54),
+      initiallyExpanded: _isExpanded,
+      onExpansionChanged: (bool expanded) {
+        setState(() {
+          _isExpanded = expanded;
+        });
+      },
       children: [
         _buildAccountForm(context),
       ],
@@ -207,7 +235,7 @@ class SettingPage extends StatelessWidget {
             color: AppColors.white),
         child: Ripple(
           onTap: () {
-            Navigator.pop(context);
+            _closeExpansion();
           },
           child: Padding(
             padding: EdgeInsets.symmetric(
@@ -230,7 +258,7 @@ class SettingPage extends StatelessWidget {
       child: GradientButton(
           buttonText: "Apply",
           onTap: () {
-            Navigator.pop(context);
+            //Navigator.pop(context);
           }),
     );
   }

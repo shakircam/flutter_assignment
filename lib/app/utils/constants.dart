@@ -5,3 +5,5 @@ const int loggerErrorMethodCount = 8;
 const int loggerMethodCount = 2;
 const String theme = "theme";
 const String appLanguage = "app_language";
+const String APP_TOKEN = "token";
+const int SUCCESS = 200;

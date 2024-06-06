@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_assessment/app/core/values/app_colors.dart';
 import 'package:flutter_assessment/app/modules/cart/view/cart_page.dart';
 import 'package:flutter_assessment/app/modules/home/view/home_page.dart';
 import 'package:flutter_assessment/app/modules/main/controller/bottom_nav_controller.dart';
@@ -20,9 +21,18 @@ class _MainViewState extends State<MainView> {
   Widget build(BuildContext context) {
     var navController = Provider.of<BottomNavController>(context, listen: true);
     return Scaffold(
+      extendBody: true,
       body: getPageOnSelectedMenu(navController.selectedMenuCode),
       bottomNavigationBar:
           BottomNavBar(onNewMenuSelected: navController.onMenuSelected),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        backgroundColor: AppColors.bottomItemSelectedColor,
+        foregroundColor: Colors.white,
+        shape: const CircleBorder(),
+        child: const Icon(Icons.search),
+      ),
     );
   }
 

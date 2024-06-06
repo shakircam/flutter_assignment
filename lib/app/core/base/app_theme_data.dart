@@ -44,6 +44,7 @@ class AppThemeData {
         backgroundColor: AppColors.appBarColorDark,
         titleTextStyle: pageTitleStyleDark.copyWith(fontFamily: _getFont()),
       ),
+      bottomAppBarTheme: BottomAppBarTheme(color: AppColors.white),
       fontFamily: _getFont(),
       colorScheme: ColorScheme.fromSwatch(
         primarySwatch: AppColors.colorPrimarySwatch,
@@ -92,6 +93,7 @@ class AppThemeData {
         backgroundColor: AppColors.appBarColor,
         titleTextStyle: pageTitleStyle.copyWith(fontFamily: _getFont()),
       ),
+      bottomAppBarTheme: BottomAppBarTheme(color: AppColors.white),
       fontFamily: _getFont(),
       colorScheme: ColorScheme.fromSwatch(
           primarySwatch: AppColors.colorPrimarySwatch,

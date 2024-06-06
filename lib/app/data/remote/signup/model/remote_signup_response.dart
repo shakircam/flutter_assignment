@@ -1,5 +1,5 @@
 class RemoteSignupResponse {
-  final String code;
+  final int code;
   final String message;
 
   RemoteSignupResponse({
