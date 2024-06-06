@@ -18,6 +18,7 @@ class SettingPage extends StatefulWidget {
 
 class _SettingPageState extends State<SettingPage> {
   bool _isExpanded = false;
+  final _expansionController = ExpansionTileController();
 
   void _toggleExpansion() {
     setState(() {
@@ -114,18 +115,13 @@ class _SettingPageState extends State<SettingPage> {
 
   Widget _buildAccountSection(BuildContext context) {
     return ExpansionTile(
+      controller: _expansionController,
       leading: const Icon(Icons.account_circle, color: Colors.black54),
       title: const Text(
         'Account',
         style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w500),
       ),
       trailing: const Icon(Icons.chevron_right, color: Colors.black54),
-      initiallyExpanded: _isExpanded,
-      onExpansionChanged: (bool expanded) {
-        setState(() {
-          _isExpanded = expanded;
-        });
-      },
       children: [
         _buildAccountForm(context),
       ],
@@ -235,7 +231,7 @@ class _SettingPageState extends State<SettingPage> {
             color: AppColors.white),
         child: Ripple(
           onTap: () {
-            _closeExpansion();
+            _expansionController.collapse();
           },
           child: Padding(
             padding: EdgeInsets.symmetric(
