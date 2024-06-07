@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_assessment/app/core/values/app_colors.dart';
 import 'package:flutter_assessment/app/core/values/app_gradients.dart';
 import 'package:flutter_assessment/app/core/values/app_values.dart';
 import 'package:flutter_assessment/app/core/values/text_style.dart';
@@ -9,11 +10,13 @@ import 'ripple.dart';
 class GradientButton extends StatelessWidget {
   final String buttonText;
   final Function()? onTap;
+  final bool isLoading;
 
   const GradientButton({
     Key? key,
     required this.buttonText,
     required this.onTap,
+    this.isLoading = false,
   }) : super(key: key);
 
   @override
@@ -28,17 +31,26 @@ class GradientButton extends StatelessWidget {
         gradient: AppGradients.datePickerGradient,
       ),
       child: Ripple(
-        onTap: onTap,
+        onTap: isLoading ? null : onTap,
         child: Padding(
           padding: EdgeInsets.symmetric(
             vertical: AppValues.smallPadding.h,
             horizontal: AppValues.padding.w,
           ),
-          child: Text(
-            buttonText,
-            style: datePickerSetButtonTextStyle,
-            textAlign: TextAlign.center,
-          ),
+          child: isLoading
+              ? const SizedBox(
+                  width: 20,
+                  height: 20,
+                  child: CircularProgressIndicator(
+                    valueColor:
+                        AlwaysStoppedAnimation<Color>(AppColors.colorWhite),
+                  ),
+                )
+              : Text(
+                  buttonText,
+                  style: datePickerSetButtonTextStyle,
+                  textAlign: TextAlign.center,
+                ),
         ),
       ),
     );

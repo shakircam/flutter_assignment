@@ -11,7 +11,7 @@ class SettingController extends ChangeNotifier {
   bool _isLoading = false;
   bool get isLoading => _isLoading;
 
-  Future<RemoteUserUpdateResponse> userSignup(UserUpdateParams params) async {
+  Future<RemoteUserUpdateResponse> userUpdate(UserUpdateParams params) async {
     try {
       _isLoading = true;
       notifyListeners();

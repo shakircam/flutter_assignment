@@ -5,6 +5,7 @@ import 'package:flutter_assessment/app/modules/cart/view/cart_page.dart';
 import 'package:flutter_assessment/app/modules/home/view/home_page.dart';
 import 'package:flutter_assessment/app/modules/main/controller/bottom_nav_controller.dart';
 import 'package:flutter_assessment/app/modules/main/model/menu_code.dart';
+import 'package:flutter_assessment/app/modules/more/more.dart';
 import 'package:flutter_assessment/app/modules/setting/view/setting_page.dart';
 import 'package:provider/provider.dart';
 import 'bottom_nav_bar.dart';
@@ -44,6 +45,8 @@ class _MainViewState extends State<MainView> {
         return const SettingPage();
       case MenuCode.CART:
         return const CartPage();
+      case MenuCode.MORE:
+        return const MorePage();
       default:
         return const CartPage();
     }

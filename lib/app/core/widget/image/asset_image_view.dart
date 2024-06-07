@@ -23,7 +23,6 @@ class AssetImageView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    log("image asset view $fileName");
     return _getView();
   }
 

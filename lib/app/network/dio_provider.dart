@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_assessment/app/network/pretty_dio_logger.dart';
 import 'package:flutter_assessment/app/network/request_headers.dart';
+import 'package:flutter_assessment/app/utils/constants.dart';
 import 'package:flutter_assessment/flavors/build_config.dart';
 
 class DioProvider {
@@ -19,10 +20,12 @@ class DioProvider {
       maxWidth: _maxLineWidth);
 
   static final BaseOptions _options = BaseOptions(
-    baseUrl: baseUrl,
-    connectTimeout: const Duration(seconds: 60),
-    receiveTimeout: const Duration(seconds: 60),
-  );
+      baseUrl: baseUrl,
+      connectTimeout: const Duration(seconds: 60),
+      receiveTimeout: const Duration(seconds: 60),
+      headers: {
+        'Content-Type': 'application/json',
+      });
 
   static Dio get httpDio {
     if (_instance == null) {

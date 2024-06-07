@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter_assessment/app/core/base/base_remote_source.dart';
 import 'package:flutter_assessment/app/core/values/api_end_points.dart';
 import 'package:dio/dio.dart';
@@ -10,7 +12,8 @@ class SignupRemoteSourceImpl extends BaseRemoteSource
   @override
   Future<RemoteSignupResponse> userSignup(UserSignupParams params) async {
     String endpoint = ApiEndPoints.signupEndPoint;
-    var dioCall = dioClient.post(endpoint, queryParameters: params.toJson());
+
+    var dioCall = dioClient.post(endpoint, data: params.toJson());
 
     try {
       return callApiWithErrorParser(dioCall)

@@ -1,13 +1,23 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_assessment/app/core/route/route_paths.dart';
+import 'package:flutter_assessment/app/core/services/service_locator.dart';
 import 'package:flutter_assessment/app/core/values/app_colors.dart';
 import 'package:flutter_assessment/app/core/values/app_values.dart';
+import 'package:flutter_assessment/app/core/widget/button/custom_button.dart';
 import 'package:flutter_assessment/app/core/widget/button/gradient_button.dart';
 import 'package:flutter_assessment/app/core/widget/button/ripple.dart';
+import 'package:flutter_assessment/app/core/widget/input%20field/custom_text_field.dart';
+import 'package:flutter_assessment/app/data/local/preference/pref_manager.dart';
+import 'package:flutter_assessment/app/data/remote/user%20update/model/user_update_params.dart';
+import 'package:flutter_assessment/app/modules/setting/controller/setting_controller.dart';
 import 'package:flutter_assessment/app/modules/setting/widget/image_avatar.dart';
 import 'package:flutter_assessment/app/modules/setting/widget/theme_dialog.dart';
+import 'package:flutter_assessment/app/utils/constants.dart';
+import 'package:flutter_assessment/app/utils/snackbar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 
 class SettingPage extends StatefulWidget {
   const SettingPage({super.key});
@@ -17,20 +27,19 @@ class SettingPage extends StatefulWidget {
 }
 
 class _SettingPageState extends State<SettingPage> {
-  bool _isExpanded = false;
+  final _formKey = GlobalKey<FormState>();
   final _expansionController = ExpansionTileController();
+  final _firstNameController = TextEditingController();
+  final _lastNameController = TextEditingController();
 
-  void _toggleExpansion() {
-    setState(() {
-      _isExpanded = !_isExpanded;
-    });
-  }
+  String firstName = "John";
+  String lastName = "Smith";
 
-  void _closeExpansion() {
-    setState(() {
-      log("click for close");
-      _isExpanded = false;
-    });
+  @override
+  void dispose() {
+    _firstNameController.dispose();
+    _lastNameController.dispose();
+    super.dispose();
   }
 
   @override
@@ -51,7 +60,7 @@ class _SettingPageState extends State<SettingPage> {
           const SizedBox(
             height: 30,
           ),
-          _textView("John Smith", true, fontSize: 16),
+          _textView("$firstName $lastName", true, fontSize: 16),
           _textView("info@johnsmith.com", false),
           const SizedBox(
             height: 30,
@@ -137,9 +146,10 @@ class _SettingPageState extends State<SettingPage> {
       leading: Icon(icon, color: Colors.black54),
       title: Text(
         text,
-        style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w500),
+        style:
+            const TextStyle(color: Colors.black87, fontWeight: FontWeight.w500),
       ),
-      trailing: Icon(Icons.chevron_right, color: Colors.black54),
+      trailing: const Icon(Icons.chevron_right, color: Colors.black54),
       onTap: onTap,
     );
   }
@@ -153,69 +163,38 @@ class _SettingPageState extends State<SettingPage> {
   }
 
   Widget _buildAccountForm(BuildContext context) {
-    return Column(
-      children: [
-        _buildTextField('Email', 'youremail@xmail.com'),
-        _buildTextField('Full Name', 'William Bennett'),
-        _buildTextField('Street Address', '465 Nolan Causeway Suite 079'),
-        _buildTextField('Apt, Suite, Bldg (optional)', 'Unit 512'),
-        _buildTextField('Zip Code', '77017'),
-        const SizedBox(height: 20),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            _buildCancelButton(context),
-            const SizedBox(width: 16),
-            _buildSaveButton(context),
-          ],
-        ),
-        const SizedBox(height: 16),
-      ],
-    );
-  }
-
-  Widget _buildTextField(String label, String hint) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0),
+    return Form(
+      key: _formKey,
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _labelText(label),
-          SizedBox(
-            height: 5.h,
+          CustomTextField(
+              isRequired: true,
+              padding: const EdgeInsets.symmetric(vertical: 8.0),
+              controller: _firstNameController,
+              hintText: 'First name',
+              hasBorder: true,
+              fieldType: InputFieldType.text),
+          CustomTextField(
+              isRequired: true,
+              padding: const EdgeInsets.symmetric(vertical: 8.0),
+              controller: _lastNameController,
+              hintText: 'Last name',
+              hasBorder: true,
+              fieldType: InputFieldType.text),
+          const SizedBox(height: 20),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              _buildCancelButton(context),
+              const SizedBox(width: 16),
+              _buildSaveButton(context),
+            ],
           ),
-          SizedBox(
-            height: 45.h,
-            child: TextFormField(
-              style: const TextStyle(color: Colors.black),
-              decoration: InputDecoration(
-                  labelText: label,
-                  labelStyle: const TextStyle(color: AppColors.neutralGray),
-                  hintText: hint,
-                  border: OutlineInputBorder(
-                    borderSide: const BorderSide(color: Colors.black, width: 1),
-                    borderRadius: BorderRadius.circular(8.0),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(color: Colors.grey, width: 1),
-                    borderRadius: BorderRadius.circular(8.0),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(color: Colors.grey, width: 2),
-                    borderRadius: BorderRadius.circular(8.0),
-                  )),
-            ),
-          ),
+          const SizedBox(height: 16),
         ],
       ),
     );
   }
-
-  Widget _labelText(String label) => Text(
-        label,
-        style: const TextStyle(color: Colors.black),
-      );
 
   Widget _buildCancelButton(BuildContext context) {
     return Expanded(
@@ -251,11 +230,35 @@ class _SettingPageState extends State<SettingPage> {
 
   Widget _buildSaveButton(BuildContext context) {
     return Expanded(
-      child: GradientButton(
-          buttonText: "Apply",
-          onTap: () {
-            //Navigator.pop(context);
-          }),
+      child: Consumer<SettingController>(
+        builder: (context, controller, _) {
+          return GradientButton(
+              buttonText: "Apply",
+              isLoading: controller.isLoading,
+              onTap: _updateUserInfo);
+        },
+      ),
     );
+  }
+
+  void _updateUserInfo() async {
+    if (_formKey.currentState!.validate()) {
+      UserUpdateParams params = UserUpdateParams(
+          firstName: _firstNameController.text,
+          lastName: _lastNameController.text);
+      Provider.of<SettingController>(context, listen: false)
+          .userUpdate(params)
+          .then((value) {
+        if (value.userName.isNotEmpty) {
+          context.showSnackbar('Update Successfully');
+          _expansionController.collapse();
+        }
+      }).catchError((error) {
+        context.showSnackbar('An error occurred: $error');
+      });
+    } else {
+      // Form is not valid, show errors
+      log('Form is not valid');
+    }
   }
 }

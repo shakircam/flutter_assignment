@@ -4,4 +4,6 @@ class RoutePaths {
   static const String mainPage = '/';
   static const String homePage = '/home';
   static const String settingPage = '/setting';
+  static const String cartPage = '/cart';
+  static const String morePage = '/more';
 }

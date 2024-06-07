@@ -23,6 +23,7 @@ class CustomTextField extends StatefulWidget {
       this.minLines,
       this.isRequired = false,
       this.padding,
+      this.hasBorder = false,
       this.confirmController})
       : super(key: key);
 
@@ -41,6 +42,7 @@ class CustomTextField extends StatefulWidget {
   final int? minLines;
   final EdgeInsets? padding;
   final bool isRequired;
+  final bool hasBorder;
   final TextEditingController? confirmController;
 
   @override
@@ -85,7 +87,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
         }
         return getValidator(widget.fieldType)(value);
       },
-      decoration: _decoration(),
+      decoration: _decoration(widget.hasBorder),
       readOnly: widget.readOnly,
       maxLines: widget.maxLines,
       minLines: widget.minLines,
@@ -131,23 +133,29 @@ class _CustomTextFieldState extends State<CustomTextField> {
     }
   }
 
-  InputDecoration _decoration() => InputDecoration(
+  InputDecoration _decoration(bool hasBorder) => InputDecoration(
         hintText: widget.hintText,
         hintStyle: const TextStyle(fontSize: 12, color: AppColors.neutralGray),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(widget.radius),
-          borderSide: BorderSide.none,
+          borderSide: hasBorder
+              ? const BorderSide(color: Colors.black, width: 1)
+              : BorderSide.none,
         ),
         counterText: '',
         prefixIcon: widget.prefixIcon,
         suffixIcon: _suffixIcon(),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(widget.radius),
-          borderSide: BorderSide.none,
+          borderSide: hasBorder
+              ? const BorderSide(color: Colors.grey, width: 1)
+              : BorderSide.none,
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(widget.radius),
-          borderSide: BorderSide.none,
+          borderSide: hasBorder
+              ? const BorderSide(color: Colors.grey, width: 1)
+              : BorderSide.none,
         ),
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(widget.radius),

@@ -10,7 +10,7 @@ class UserUpdateRemoteSourceImpl extends BaseRemoteSource
   @override
   Future<RemoteUserUpdateResponse> userUpdate(UserUpdateParams params) async {
     String endpoint = ApiEndPoints.userUpdateEndPoint;
-    var dioCall = dioClient.post(endpoint, queryParameters: params.toJson());
+    var dioCall = dioTokenClient.post(endpoint, data: params.toJson());
 
     try {
       return callApiWithErrorParser(dioCall)

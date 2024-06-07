@@ -1,14 +1,13 @@
 import 'dart:developer';
 import 'dart:io';
 import 'package:dio/dio.dart';
-import 'package:flutter_assessment/app/network/exceptions/app_exception.dart';
-import 'package:flutter_assessment/flavors/build_config.dart';
 import '../../network/dio_provider.dart';
 import '../../network/error_handlers.dart';
 import '../../network/exceptions/base_exception.dart';
 
 abstract class BaseRemoteSource {
   Dio get dioClient => DioProvider.client;
+  Dio get dioTokenClient => DioProvider.tokenClient;
 
   //final logger = BuildConfig.instance.config.logger;
 

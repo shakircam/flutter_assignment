@@ -4,9 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_assessment/app/core/route/route_paths.dart';
 import 'package:flutter_assessment/app/core/services/service_locator.dart';
 import 'package:flutter_assessment/app/data/local/preference/pref_manager.dart';
+import 'package:flutter_assessment/app/modules/cart/view/cart_page.dart';
 import 'package:flutter_assessment/app/modules/home/view/home_page.dart';
 import 'package:flutter_assessment/app/modules/login/view/login_page.dart';
 import 'package:flutter_assessment/app/modules/main/view/main_view.dart';
+import 'package:flutter_assessment/app/modules/more/more.dart';
 import 'package:flutter_assessment/app/modules/setting/view/setting_page.dart';
 import 'package:flutter_assessment/app/modules/signup/view/signup_page.dart';
 import 'package:flutter_assessment/app/utils/constants.dart';
@@ -37,7 +39,6 @@ class RouterService {
         redirect: (context, state) async {
           final routerService = RouterService();
           if (await routerService.isLoggedIn()) {
-            log("isLogged in");
             return null;
           }
           return RoutePaths
@@ -51,6 +52,14 @@ class RouterService {
       GoRoute(
         path: RoutePaths.settingPage,
         builder: (context, state) => SettingPage(),
+      ),
+      GoRoute(
+        path: RoutePaths.cartPage,
+        builder: (context, state) => CartPage(),
+      ),
+      GoRoute(
+        path: RoutePaths.morePage,
+        builder: (context, state) => MorePage(),
       ),
     ],
     errorBuilder: (context, state) => const ErrorPage(),

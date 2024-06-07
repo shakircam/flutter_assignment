@@ -118,13 +118,13 @@ class _BottomNavBarState extends State<BottomNavBar> {
         navTitle: "More",
         activeIcon: AppIcons.moreIcon,
         regularIcon: AppIcons.moreIcon,
-        menuCode: MenuCode.SETTING,
+        menuCode: MenuCode.MORE,
       ),
       BottomNavItem.fromAsset(
         navTitle: "Cart",
         activeIcon: AppIcons.cartIcon,
         regularIcon: AppIcons.cartIcon,
-        menuCode: MenuCode.SETTING,
+        menuCode: MenuCode.CART,
       ),
       BottomNavItem.fromAsset(
         navTitle: "Setting",
